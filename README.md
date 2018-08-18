@@ -1,5 +1,7 @@
 # ED_Lib
-Implementations of edge (ED, EDColor, EDPF), line (EDLines), circle (EDCircles), color edge segment (EDColor) detection algorithms.
+EDGE DRAWING LIBRARY FOR GEOMETRIC FEATURE EXTRACTION AND VALIDATION
+
+keywords: edge detection, edge segment detection, color edge detection, line detection, line segment detection, circle detection, ellipse detection.
 
 Edge Drawing (ED) algorithm is an proactive approach on edge detection problem.
 In contrast to many other existing edge detection algorithms which follow a subtractive approach (i.e. after applying gradient filters onto an image eliminating pixels w.r.t. several rules, e.g. non-maximal suppression and hysteresis in Canny), ED algorithm works via an additive strategy, i.e. it picks edge pixels one by one, hence the name Edge Drawing.
@@ -50,13 +52,16 @@ paper: C. Akinlar, C. Topal, ColorED: Color edge and segment detection by Edge D
 
 
 Instructions:
-
-You can detect edge segments with ED, EDPF and EDColor easily.
-Then it is possible to feed that ED instance to EDLines or EDCircles to extract line segments, circles and ellipses.
+You can detect edge segments with ED, EDPF and EDColor; and lines and circles with EDLines and EDCircles, easily.
+It is also possible to feed ED instances to EDLines or EDCircles to extract line segments, circles and ellipses without need to run edge segment detection again.
 In this way, redundant computation can be avoided.
 Results might slightly differ between using directly EDLines and ED + EDX (EDLines, EDCircles, etc.) because of the differences in default gradient operators and parameters in the algorithms.
 There are several usage scenarios in test.cpp. 
 
 Disclaimer for Edge Drawing Library
 
-This software library is provided "as is" and "with all faults." Authors of this library make no warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software product. There are inherent dangers in the use of any software, and you are solely responsible for determining whether this software product is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and the authors of this software product will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software product. By using this library in any work (commercial or scientific), you are implicitly presumed to have accepted all of the above statements, and accept to cite the following papers:
+This software library is provided "as is" and "with all faults." Authors of this library make no warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software product. 
+There are inherent dangers in the use of any software, and you are solely responsible for determining whether this software product is compatible with your equipment and other software installed on your equipment. 
+You are also solely responsible for the protection of your equipment and backup of your data, and the authors of this software product will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software product. 
+By using this library in any work (commercial or scientific), you are implicitly presumed to have accepted all of the above statements, and accept to cite the aforementioned papers.
+
