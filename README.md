@@ -28,13 +28,14 @@ paper: C. Akinlar, C. Topal, EDPF: A Real-time Parameter-free Edge Segment Detec
 
 
 EDLines: Detects line segments in the image and provides the result as a vector list consisting of starting and ending points.
+EDLines is alos a parameter-free algorithm which validates all detected lines via Helmholtz Principle.
 
 paper: C. Akinlar, C. Topal, EDLines: A real-time line segment detector with a false detection control, Pattern Recognition Letters, vol.32, iss.13, pg. 1633-1642, October 2011. 
 
 [https://www.sciencedirect.com/science/article/pii/S0167865511001772]
 
 
-EDCircles: Detects circles and ellipses (up to a level of eccentricity) in an input image and returns the result in a list of circle and ellipse parameters.
+EDCircles: Detects circles and ellipses (up to a level of eccentricity) in an input image and returns the result in a list of circle and ellipse parameters. Just like EDPF and EDLines, EDCircles is alos a parameter-free algorithm that applies validation via Helmholtz Principle.
 
 paper: C. Akinlar, C. Topal, EDCircles: A Real-time Circle Detector with a False Detection Control, Pattern Recognition, 46(3), 725-740, March 2013.
 
@@ -47,6 +48,14 @@ paper: C. Akinlar, C. Topal, ColorED: Color edge and segment detection by Edge D
 
 [https://www.sciencedirect.com/science/article/pii/S1047320317300305]
 
+
+Instructions:
+
+You can detect edge segments with ED, EDPF and EDColor easily.
+Then it is possible to feed that ED instance to EDLines or EDCircles to extract line segments, circles and ellipses.
+In this way, redundant computation can be avoided.
+Results might slightly differ between using directly EDLines and ED + EDX (EDLines, EDCircles, etc.) because of the differences in default gradient operators and parameters in the algorithms.
+There are several usage scenarios in test.cpp. 
 
 Disclaimer for Edge Drawing Library
 
