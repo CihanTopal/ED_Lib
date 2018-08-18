@@ -12,27 +12,41 @@ Therefore it can extract high quality edge segments without need for an addition
 The list of algorithms in this library:
 
 ED: Edge Drawing detection algorithm. Detects edge segments in an input image and provides the result in segment form (a vector of edge segment pixels).
+
 paper: C. Topal, C. Akinlar, Edge Drawing: A Combined Real-Time Edge and Segment Detector, Journal of Visual Communication and Image Representation, vol.23, no.6, pp.862-872, August 2012.
 
 [https://www.sciencedirect.com/science/article/pii/S1047320312000831]
 
 Demo video: https://www.youtube.com/watch?v=-Bpb_OLfOts
 
+
 EDPF: Edge Drawing - Parameter Free: Detects edge segments without need for parameter tuning. It runs naive ED with all parameters at their extreme to detect all possible edge segments, then invalidates false detected segments due to Helmholtz Principle.
+
 paper: C. Akinlar, C. Topal, EDPF: A Real-time Parameter-free Edge Segment Detector with a False Detection Control, Int’l Journal of Pattern Recognition and Artificial Intelligence, vol.26, no.1, 2012.
+
 [https://doi.org/10.1142/S0218001412550026]
 
+
 EDLines: Detects line segments in the image and provides the result as a vector list consisting of starting and ending points.
+
 paper: C. Akinlar, C. Topal, EDLines: A real-time line segment detector with a false detection control, Pattern Recognition Letters, vol.32, iss.13, pg. 1633-1642, October 2011. 
+
 [https://www.sciencedirect.com/science/article/pii/S0167865511001772]
 
+
 EDCircles: Detects circles and ellipses (up to a level of eccentricity) in an input image and returns the result in a list of circle and ellipse parameters.
+
 paper: C. Akinlar, C. Topal, EDCircles: A Real-time Circle Detector with a False Detection Control, Pattern Recognition, 46(3), 725-740, March 2013.
+
 [https://www.sciencedirect.com/science/article/pii/S0031320312004268]
 
+
 EDColor: Edge Drawing - Color: Detects edges in segment form on color image using a color gradient computation, hence provides better results than converting the image to grayscale.
+
 paper: C. Akinlar, C. Topal, ColorED: Color edge and segment detection by Edge Drawing (ED), Journal of Visual Communication and Image Representation, vol.44, pp.82-94, April 2017.
+
 [https://www.sciencedirect.com/science/article/pii/S1047320317300305]
+
 
 Disclaimer for Edge Drawing Library
 
