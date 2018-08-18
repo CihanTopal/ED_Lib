@@ -28,7 +28,7 @@ EDCircles: Detects circles and ellipses (up to a level of eccentricity) in an in
 paper: C. Akinlar, C. Topal, EDCircles: A Real-time Circle Detector with a False Detection Control, Pattern Recognition, 46(3), 725-740, March 2013.
 [https://www.sciencedirect.com/science/article/pii/S0031320312004268]
 
-EDColor: Edge Drawing - Color: Detects edges on color image using a color gradient computation, hence provides better results than converting the image to grayscale.
+EDColor: Edge Drawing - Color: Detects edges in segment form on color image using a color gradient computation, hence provides better results than converting the image to grayscale.
 paper: C. Akinlar, C. Topal, ColorED: Color edge and segment detection by Edge Drawing (ED), Journal of Visual Communication and Image Representation, vol.44, pp.82-94, April 2017.
 [https://www.sciencedirect.com/science/article/pii/S1047320317300305]
 
