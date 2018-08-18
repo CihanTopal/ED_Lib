@@ -11,6 +11,8 @@ However, this method does not check status of the neighboring pixels, and theref
 Instead of non-maximal supression, ED points a set of edge pixels and join them by maximizing the total gradient response of edge segments.
 Therefore it can extract high quality edge segments without need for an additional hysteresis step. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 The list of algorithms in this library:
 
 ED: Edge Drawing detection algorithm. Detects edge segments in an input image and provides the result in segment form (a vector of edge segment pixels).
@@ -21,6 +23,7 @@ paper: C. Topal, C. Akinlar, Edge Drawing: A Combined Real-Time Edge and Segment
 
 Demo video: https://www.youtube.com/watch?v=-Bpb_OLfOts
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 EDPF: Edge Drawing - Parameter Free: Detects edge segments without need for parameter tuning. It runs naive ED with all parameters at their extreme to detect all possible edge segments, then invalidates false detected segments due to Helmholtz Principle.
 
@@ -28,6 +31,7 @@ paper: C. Akinlar, C. Topal, EDPF: A Real-time Parameter-free Edge Segment Detec
 
 [https://doi.org/10.1142/S0218001412550026]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 EDLines: Detects line segments in the image and provides the result as a vector list consisting of starting and ending points.
 EDLines is alos a parameter-free algorithm which validates all detected lines via Helmholtz Principle.
@@ -36,6 +40,7 @@ paper: C. Akinlar, C. Topal, EDLines: A real-time line segment detector with a f
 
 [https://www.sciencedirect.com/science/article/pii/S0167865511001772]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 EDCircles: Detects circles and ellipses (up to a level of eccentricity) in an input image and returns the result in a list of circle and ellipse parameters. Just like EDPF and EDLines, EDCircles is alos a parameter-free algorithm that applies validation via Helmholtz Principle.
 
@@ -43,6 +48,7 @@ paper: C. Akinlar, C. Topal, EDCircles: A Real-time Circle Detector with a False
 
 [https://www.sciencedirect.com/science/article/pii/S0031320312004268]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 EDColor: Edge Drawing - Color: Detects edges in segment form on color image using a color gradient computation, hence provides better results than converting the image to grayscale.
 
@@ -50,6 +56,7 @@ paper: C. Akinlar, C. Topal, ColorED: Color edge and segment detection by Edge D
 
 [https://www.sciencedirect.com/science/article/pii/S1047320317300305]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Instructions:
 You can detect edge segments with ED, EDPF and EDColor; and lines and circles with EDLines and EDCircles, easily.
