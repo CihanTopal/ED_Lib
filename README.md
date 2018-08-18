@@ -13,7 +13,9 @@ The list of algorithms in this library:
 
 ED: Edge Drawing detection algorithm. Detects edge segments in an input image and provides the result in segment form (a vector of edge segment pixels).
 paper: C. Topal, C. Akinlar, Edge Drawing: A Combined Real-Time Edge and Segment Detector, Journal of Visual Communication and Image Representation, vol.23, no.6, pp.862-872, August 2012.
+
 [https://www.sciencedirect.com/science/article/pii/S1047320312000831]
+
 Demo video: https://www.youtube.com/watch?v=-Bpb_OLfOts
 
 EDPF: Edge Drawing - Parameter Free: Detects edge segments without need for parameter tuning. It runs naive ED with all parameters at their extreme to detect all possible edge segments, then invalidates false detected segments due to Helmholtz Principle.
