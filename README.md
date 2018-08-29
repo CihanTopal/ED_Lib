@@ -65,6 +65,10 @@ In this way, redundant computation can be avoided.
 Results might slightly differ between using directly EDLines and ED + EDX (EDLines, EDCircles, etc.) because of the differences in default gradient operators and parameters in the algorithms.
 There are several usage scenarios in test.cpp. 
 
+Dependencies: Opencv 3.4
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Disclaimer for Edge Drawing Library
 
 This software library is provided "as is" and "with all faults." Authors of this library make no warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software product. 
