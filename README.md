@@ -63,7 +63,7 @@ You can detect edge segments with ED, EDPF and EDColor; and lines and circles wi
 It is also possible to feed ED instances to EDLines or EDCircles to extract line segments, circles and ellipses without need to run edge segment detection again.
 In this way, redundant computation can be avoided.
 Results might slightly differ between using directly EDLines and ED + EDX (EDLines, EDCircles, etc.) because of the differences in default gradient operators and parameters in the algorithms.
-There are several usage scenarios in test.cpp. 
+There are several usage scenarios available in test.cpp. 
 
 Dependencies: OpenCV 3.4
 
