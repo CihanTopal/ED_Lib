@@ -139,7 +139,7 @@ EDCircles::EDCircles(Mat srcImage)
 	} //end-for
 
 	// This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = lines.size() / 2 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -354,7 +354,7 @@ EDCircles::EDCircles(ED obj)
 	} //end-for
 
 	  // This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = lines.size() / 2 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -569,7 +569,7 @@ EDCircles::EDCircles(EDColor obj)
 	} //end-for
 
 	  // This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = lines.size() / 2 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -1097,6 +1097,14 @@ void EDCircles::ValidateCircles()
 		if (circle->isEllipse) {
 			noPoints = (int)(computeEllipsePerimeter(&circle->eq));
 
+			// Reallocate memory
+			if (noPoints > 8 * (width + height)) {
+				delete[] px;
+				delete[] py;
+				px = new double[noPoints];
+				py = new double[noPoints];
+			}
+			
 			if (noPoints % 2) noPoints--;
 			ComputeEllipsePoints(circle->eq.coeff, px, py, noPoints);
 
