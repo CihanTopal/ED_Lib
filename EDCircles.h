@@ -1,28 +1,14 @@
 /**************************************************************************************************************
 * EDCircles source codes.
-* Copyright (C) 2016, Cuneyt Akinlar & Cihan Topal
-* E-mails of the authors: cuneytakinlar@gmail.com, cihant@anadolu.edu.tr
+* Copyright (C) Cuneyt Akinlar, Cihan Topal
+* E-mails of the authors: cuneytakinlar@gmail.com, cihantopal@gmail.com
 *
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+* Please cite the following papers if you use EDCircles library:
 *
-* By using this library you are implicitly assumed to have accepted all of the above statements,
-* and accept to cite the following papers:
-*
-* [1] C. Akinlar and C. Topal, ìEDCircles: A Real-time Circle Detector with a False Detection Control,î
+* [1] C. Akinlar and C. Topal, ‚ÄúEDCircles: A Real-time Circle Detector with a False Detection Control,‚Äù
 *     Pattern Recognition, 46(3), 725-740, 2013.
 *
-* [2] C. Akinlar and C. Topal, ìEDCircles: Realtime Circle Detection by Edge Drawing (ED),î
+* [2] C. Akinlar and C. Topal, ‚ÄúEDCircles: Realtime Circle Detection by Edge Drawing (ED),‚Äù
 *     IEEE Int'l Conf. on Acoustics,  Speech, and Signal Processing (ICASSP)}, March 2012.
 **************************************************************************************************************/
 
