@@ -75,5 +75,3 @@ This software library is provided "as is" and "with all faults." Authors of this
 There are inherent dangers in the use of any software, and you are solely responsible for determining whether this software product is compatible with your equipment and other software installed on your equipment. 
 You are also solely responsible for the protection of your equipment and backup of your data, and the authors of this software product will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software product. 
 By using this library in any scientific work, you are implicitly presumed to have accepted all of the above statements, and accept to cite the aforementioned papers.
-Please contact for commercial use.
-
