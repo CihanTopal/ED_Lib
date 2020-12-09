@@ -1,29 +1,15 @@
 /**************************************************************************************************************
 * EDLines source codes.
-* Copyright (C) 2016, Cuneyt Akinlar & Cihan Topal
-* E-mails of the authors: cuneytakinlar@gmail.com, cihant@anadolu.edu.tr
+* Copyright (C) Cuneyt Akinlar & Cihan Topal
+* E-mails of the authors: cuneytakinlar@gmail.com, cihantopal@gmail.com
 *
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+* Please cite the following papers if you use EDLines library:
 *
-* By using this library you are implicitly assumed to have accepted all of the above statements,
-* and accept to cite the following papers:
-*
-* [1] C. Akinlar and C. Topal, ìEDLines: A Real-time Line Segment Detector with a False Detection Control,î
+* [1] C. Akinlar and C. Topal, ‚ÄúEDLines: A Real-time Line Segment Detector with a False Detection Control,‚Äù
 *     Pattern Recognition Letters, 32(13), 1633-1642, DOI: 10.1016/j.patrec.2011.06.001 (2011).
 *
-* [2] C. Akinlar and C. Topal, ìEDLines: Realtime Line Segment Detection by Edge Drawing (ED),î
-*     IEEE Intíl Conf. on Image Processing (ICIP), Sep. 2011.
+* [2] C. Akinlar and C. Topal, ‚ÄúEDLines: Realtime Line Segment Detection by Edge Drawing (ED),‚Äù
+*     IEEE Int‚Äôl Conf. on Image Processing (ICIP), Sep. 2011.
 **************************************************************************************************************/
 
 #ifndef _EDLines_
