@@ -12,6 +12,8 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
+#
+set(CMAKE_BUILD_TYPE "Debug")
 
 # OpenCV
 find_package(OpenCV REQUIRED)
@@ -34,6 +36,13 @@ target_link_libraries(ED_Lib
 add_executable(ED_Lib_test test.cpp)
 target_link_libraries(ED_Lib_test
     ED_Lib
+)
+
+# test runway
+add_executable(test_runway test_runway.cpp)
+target_link_libraries(test_runway
+    ED_Lib
+    stdc++fs    # <experimental/filesystem>
 )
 
 
