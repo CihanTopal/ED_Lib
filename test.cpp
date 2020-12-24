@@ -1,4 +1,4 @@
-#include "EDLib.h"
+#include "src/EDLib.h"
 #include <iostream>
 
 using namespace cv;

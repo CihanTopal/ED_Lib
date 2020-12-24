@@ -1,0 +1,8 @@
+# CMakeLists.txt.user
+CMakeLists.txt.user
+
+# build
+build/
+
+# lib
+lib/
