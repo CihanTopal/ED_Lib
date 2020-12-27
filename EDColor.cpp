@@ -19,7 +19,8 @@ EDColor::EDColor(Mat srcImage, int gradThresh, int anchor_thresh , double sigma,
 	}
 
 	// split channels (OpenCV uses BGR)
-	Mat bgr[3];
+	//Mat bgr[3];
+	vector<Mat> bgr(3);
 	split(srcImage, bgr);
 	blueImg = bgr[0].data;
 	greenImg = bgr[1].data;
@@ -151,7 +152,7 @@ void EDColor::MyRGB2LabFast()
 		green = green * 100;
 		blue = blue * 100;
 
-		//Observer. = 2°, Illuminant = D65
+		//Observer. = 2Â°, Illuminant = D65
 		x = red*0.4124564 + green*0.3575761 + blue*0.1804375;
 		y = red*0.2126729 + green*0.7151522 + blue*0.0721750;
 		z = red*0.0193339 + green*0.1191920 + blue*0.9503041;
@@ -161,7 +162,7 @@ void EDColor::MyRGB2LabFast()
 		double refY = 100.000;
 		double refZ = 108.883;
 
-		x = x / refX;          //ref_X =  95.047   Observer= 2°, Illuminant= D65
+		x = x / refX;          //ref_X =  95.047   Observer= 2Â°, Illuminant= D65
 		y = y / refY;          //ref_Y = 100.000
 		z = z / refZ;          //ref_Z = 108.883
 
