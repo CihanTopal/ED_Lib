@@ -164,7 +164,7 @@ public:
 	} //end-EDArcs
 
 	~EDArcs() {
-		delete arcs;
+		delete[] arcs;
 	} //end-~EDArcs
 };
 
@@ -182,8 +182,8 @@ struct BufferManager {
 	} //end-BufferManager
 
 	~BufferManager() {
-		delete x;
-		delete y;
+		delete[] x;
+		delete[] y;
 	} //end-~BufferManager  
 
 	double *getX() { return &x[index]; }
