@@ -15,7 +15,7 @@ EDCircles::EDCircles(Mat srcImage)
 	// ----------------------------------- DETECT LINES ---------------------------------
 	int bufferSize = 0;
 	for (int i = 0; i < segmentPoints.size(); i++) 
-		bufferSize += segmentPoints[i].size();
+		bufferSize += (int)segmentPoints[i].size();
 
 	// Compute the starting line number for each segment
 	segmentStartLines = new int[segmentNos + 1];
@@ -29,9 +29,9 @@ EDCircles::EDCircles(Mat srcImage)
 	for (int i = 0; i < segmentNos; i++) {
 
 		// Make note of the starting line number for this segment
-		segmentStartLines[i] = lines.size();
+		segmentStartLines[i] = (int)lines.size();
 
-		int noPixels = segmentPoints[i].size();
+		int noPixels = (int)segmentPoints[i].size();
 
 		if (noPixels < 2 * CIRCLE_MIN_LINE_LEN) 
 			continue;
@@ -96,7 +96,7 @@ EDCircles::EDCircles(Mat srcImage)
 		EDLines::SplitSegment2Lines(x, y, noPixels, i, lines);
 	}
 
-	segmentStartLines[segmentNos] = lines.size();
+	segmentStartLines[segmentNos] = (int)lines.size();
 
 	// ------------------------------- DETECT ARCS ---------------------------------
 
@@ -139,7 +139,7 @@ EDCircles::EDCircles(Mat srcImage)
 	} //end-for
 
 	// This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = (int)lines.size() / 3 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -189,7 +189,7 @@ EDCircles::EDCircles(Mat srcImage)
 			double a;
 			double b;
 			double theta = ComputeEllipseCenterAndAxisLengths(&eq, &xc, &yc, &a, &b);
-			ellipses.push_back(mEllipse(Point2d(xc, yc), Size(a, b), theta));
+			ellipses.push_back(mEllipse(Point2d(xc, yc), Size2d(a, b), theta));
 
 		}
 		else {
@@ -230,7 +230,7 @@ EDCircles::EDCircles(ED obj)
 	// ----------------------------------- DETECT LINES ---------------------------------
 	int bufferSize = 0;
 	for (int i = 0; i < segmentPoints.size(); i++)
-		bufferSize += segmentPoints[i].size();
+		bufferSize += (int)segmentPoints[i].size();
 
 	// Compute the starting line number for each segment
 	segmentStartLines = new int[segmentNos + 1];
@@ -244,9 +244,9 @@ EDCircles::EDCircles(ED obj)
 	for (int i = 0; i < segmentNos; i++) {
 
 		// Make note of the starting line number for this segment
-		segmentStartLines[i] = lines.size();
+		segmentStartLines[i] = (int)lines.size();
 
-		int noPixels = segmentPoints[i].size();
+		int noPixels = (int)segmentPoints[i].size();
 
 		if (noPixels < 2 * CIRCLE_MIN_LINE_LEN)
 			continue;
@@ -311,7 +311,7 @@ EDCircles::EDCircles(ED obj)
 		EDLines::SplitSegment2Lines(x, y, noPixels, i, lines);
 	}
 
-	segmentStartLines[segmentNos] = lines.size();
+	segmentStartLines[segmentNos] = (int)lines.size();
 
 	// ------------------------------- DETECT ARCS ---------------------------------
 
@@ -354,7 +354,7 @@ EDCircles::EDCircles(ED obj)
 	} //end-for
 
 	  // This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = (int)lines.size() / 3 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -404,7 +404,7 @@ EDCircles::EDCircles(ED obj)
 			double a;
 			double b;
 			double theta = ComputeEllipseCenterAndAxisLengths(&eq, &xc, &yc, &a, &b);
-			ellipses.push_back(mEllipse(Point2d(xc, yc), Size(a, b), theta));
+			ellipses.push_back(mEllipse(Point2d(xc, yc), Size2d(a, b), theta));
 
 		}
 		else {
@@ -445,7 +445,7 @@ EDCircles::EDCircles(EDColor obj)
 	// ----------------------------------- DETECT LINES ---------------------------------
 	int bufferSize = 0;
 	for (int i = 0; i < segmentPoints.size(); i++)
-		bufferSize += segmentPoints[i].size();
+		bufferSize += (int)segmentPoints[i].size();
 
 	// Compute the starting line number for each segment
 	segmentStartLines = new int[segmentNos + 1];
@@ -459,9 +459,9 @@ EDCircles::EDCircles(EDColor obj)
 	for (int i = 0; i < segmentNos; i++) {
 
 		// Make note of the starting line number for this segment
-		segmentStartLines[i] = lines.size();
+		segmentStartLines[i] = (int)lines.size();
 
-		int noPixels = segmentPoints[i].size();
+		int noPixels = (int)segmentPoints[i].size();
 
 		if (noPixels < 2 * CIRCLE_MIN_LINE_LEN)
 			continue;
@@ -526,7 +526,7 @@ EDCircles::EDCircles(EDColor obj)
 		EDLines::SplitSegment2Lines(x, y, noPixels, i, lines);
 	}
 
-	segmentStartLines[segmentNos] = lines.size();
+	segmentStartLines[segmentNos] = (int)lines.size();
 
 	// ------------------------------- DETECT ARCS ---------------------------------
 
@@ -569,7 +569,7 @@ EDCircles::EDCircles(EDColor obj)
 	} //end-for
 
 	  // This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = (int)lines.size() / 3 + noCircles1 * 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
@@ -623,7 +623,7 @@ EDCircles::EDCircles(EDColor obj)
 			double a;
 			double b;
 			double theta = ComputeEllipseCenterAndAxisLengths(&eq, &xc, &yc, &a, &b);
-			ellipses.push_back(mEllipse(Point2d(xc, yc), Size(a, b), theta));
+			ellipses.push_back(mEllipse(Point2d(xc, yc), Size2d(a, b), theta));
 
 		}
 		else {
@@ -666,7 +666,7 @@ cv::Mat EDCircles::drawResult(bool onImage, ImageStyle style)
 	//Circles will be indicated in green
 	if (style == ImageStyle::CIRCLES || style == ImageStyle::BOTH)
 		for (int i = 0; i < circles.size(); i++)
-			circle(colorImage, circles[i].center, circles[i].r, Scalar(0, 255, 0), 1, LINE_AA);
+			circle(colorImage, circles[i].center, (int)circles[i].r, Scalar(0, 255, 0), 1, LINE_AA);
 	
 	//Ellipses will be indicated in red
 	if (style == ImageStyle::ELLIPSES|| style == ImageStyle::BOTH)

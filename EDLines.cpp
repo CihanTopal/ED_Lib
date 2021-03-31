@@ -35,7 +35,7 @@ EDLines::EDLines(Mat srcImage ,  double _line_error, int _min_line_len, double _
 			x[k] = segment[k].x;
 			y[k] = segment[k].y;
 		}
-		SplitSegment2Lines(x, y, segment.size(), segmentNumber);
+		SplitSegment2Lines(x, y, (int)segment.size(), segmentNumber);
 	}
 
 	/*----------- JOIN COLLINEAR LINES ----------------*/
@@ -56,7 +56,7 @@ EDLines::EDLines(Mat srcImage ,  double _line_error, int _min_line_len, double _
 
 	// Delete redundant space from lines
 	// Pop them back
-	int size = lines.size();
+	int size = (int)lines.size();
 	for (int i = 1; i <= size - linesNo; i++)
 		lines.pop_back();
 	
@@ -103,7 +103,7 @@ EDLines::EDLines(ED obj, double _line_error, int _min_line_len, double _max_dist
 			x[k] = segment[k].x;
 			y[k] = segment[k].y;
 		}
-		SplitSegment2Lines(x, y, segment.size(), segmentNumber);
+		SplitSegment2Lines(x, y, (int)segment.size(), segmentNumber);
 	}
 
 	/*----------- JOIN COLLINEAR LINES ----------------*/
@@ -124,7 +124,7 @@ EDLines::EDLines(ED obj, double _line_error, int _min_line_len, double _max_dist
 
 	// Delete redundant space from lines
 	// Pop them back
-	int size = lines.size();
+	int size = (int)lines.size();
 	for (int i = 1; i <= size - linesNo; i++)
 		lines.pop_back();
 
@@ -170,7 +170,7 @@ EDLines::EDLines(EDColor obj, double _line_error, int _min_line_len, double _max
 			x[k] = segment[k].x;
 			y[k] = segment[k].y;
 		}
-		SplitSegment2Lines(x, y, segment.size(), segmentNumber);
+		SplitSegment2Lines(x, y, (int)segment.size(), segmentNumber);
 	}
 
 	/*----------- JOIN COLLINEAR LINES ----------------*/
@@ -194,7 +194,7 @@ EDLines::EDLines(EDColor obj, double _line_error, int _min_line_len, double _max
 
 	// Delete redundant space from lines
 	// Pop them back
-	int size = lines.size();
+	int size = (int)lines.size();
 	for (int i = 1; i <= size - linesNo; i++)
 		lines.pop_back();
 
