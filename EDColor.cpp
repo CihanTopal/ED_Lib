@@ -151,7 +151,7 @@ void EDColor::MyRGB2LabFast()
 		green = green * 100;
 		blue = blue * 100;
 
-		//Observer. = 2°, Illuminant = D65
+		//Observer. = 2Â°, Illuminant = D65
 		x = red*0.4124564 + green*0.3575761 + blue*0.1804375;
 		y = red*0.2126729 + green*0.7151522 + blue*0.0721750;
 		z = red*0.0193339 + green*0.1191920 + blue*0.9503041;
@@ -161,7 +161,7 @@ void EDColor::MyRGB2LabFast()
 		double refY = 100.000;
 		double refZ = 108.883;
 
-		x = x / refX;          //ref_X =  95.047   Observer= 2°, Illuminant= D65
+		x = x / refX;          //ref_X =  95.047   Observer= 2Â°, Illuminant= D65
 		y = y / refY;          //ref_Y = 100.000
 		z = z / refZ;          //ref_Z = 108.883
 
@@ -381,13 +381,13 @@ void EDColor::validateEdgeSegments()
 	// Compute np: # of segment pieces
 	np = 0;
 	for (int i = 0; i<segments.size(); i++) {
-		int len = segments[i].size();
+		int len = (int)segments[i].size();
 		np += (len*(len - 1)) / 2;
 	} //end-for
 
 	// Validate segments
 	for (int i = 0; i< segments.size(); i++) {
-		testSegment(i, 0, segments[i].size() - 1);
+		testSegment(i, 0, (int)segments[i].size() - 1);
 	} //end-for
 
 	// clear space
@@ -532,7 +532,7 @@ void EDColor::fixEdgeSegments(std::vector<std::vector<cv::Point>> map, int noPix
 {
 	/// First fix one pixel problems: There are four cases
 	for (int i = 0; i < map.size(); i++) {
-		int cp = map[i].size() - 2;  // Current pixel index
+		int cp = (int)map[i].size() - 2;  // Current pixel index
 		int n2 = 0;  // next next pixel index
 
 		while (n2 < map[i].size()) {

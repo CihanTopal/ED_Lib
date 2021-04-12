@@ -171,7 +171,7 @@ ED::ED(short *_gradImg, uchar *_dirImg, int _width, int _height, int _gradThresh
 				anchorPoints.push_back(Point(x, y)); // push validated anchor point to vector
 			}
 			
-		anchorNos = anchorPoints.size(); // get # of anchor pixels
+		anchorNos = (int)anchorPoints.size(); // get # of anchor pixels
 	}
 
 	else {
@@ -394,7 +394,7 @@ void ED::ComputeAnchorPoints()
 		} //end-for-inner
 	} //end-for-outer
 
-	anchorNos = anchorPoints.size(); // get the total number of anchor points
+	anchorNos = (int)anchorPoints.size(); // get the total number of anchor points
 }
 
 void ED::JoinAnchorPointsUsingSortedAnchors()
