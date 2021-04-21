@@ -22,8 +22,13 @@ EDLines::EDLines(Mat srcImage ,  double _line_error, int _min_line_len, double _
 
 
 	// Temporary buffers used during line fitting
-	double *x = new double[(width+height) * 8];
-	double *y = new double[(width+height) * 8];
+	size_t buffer_size = (width + height) * 8;
+	for (int segmentNumber = 0; segmentNumber < segmentPoints.size(); segmentNumber++) {
+		auto segment_size = segmentPoints[segmentNumber].size();
+		buffer_size = std::max(buffer_size, segment_size);
+	}
+	double* x = new double[buffer_size];
+	double* y = new double[buffer_size];
 
 	linesNo = 0;
 	
@@ -90,8 +95,13 @@ EDLines::EDLines(ED obj, double _line_error, int _min_line_len, double _max_dist
 	
 
 	// Temporary buffers used during line fitting
-	double *x = new double[(width + height) * 8];
-	double *y = new double[(width + height) * 8];
+	size_t buffer_size = (width + height) * 8;
+	for (int segmentNumber = 0; segmentNumber < segmentPoints.size(); segmentNumber++) {
+		auto segment_size = segmentPoints[segmentNumber].size();
+		buffer_size = std::max(buffer_size, segment_size);
+	}
+	double* x = new double[buffer_size];
+	double* y = new double[buffer_size];
 
 	linesNo = 0;
 
@@ -157,8 +167,13 @@ EDLines::EDLines(EDColor obj, double _line_error, int _min_line_len, double _max
 
 
 	// Temporary buffers used during line fitting
-	double *x = new double[(width + height) * 8];
-	double *y = new double[(width + height) * 8];
+	size_t buffer_size = (width + height) * 8;
+	for (int segmentNumber = 0; segmentNumber < segmentPoints.size(); segmentNumber++) {
+		auto segment_size = segmentPoints[segmentNumber].size();
+		buffer_size = std::max(buffer_size, segment_size);
+	}
+	double* x = new double[buffer_size];
+	double* y = new double[buffer_size];
 
 	linesNo = 0;
 
