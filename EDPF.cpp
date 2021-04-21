@@ -93,11 +93,11 @@ short * EDPF::ComputePrewitt3x3()
 			// Then: gx = com1 + com2 + (E-D) = (H-A) + (C-F) + (E-D) = (C-A) + (E-D) + (H-F)
 			//       gy = com1 - com2 + (G-B) = (H-A) - (C-F) + (G-B) = (F-A) + (G-B) + (H-C)
 			// 
-			int com1 = srcImg[(i + 1)*width + j + 1] - srcImg[(i - 1)*width + j - 1];
-			int com2 = srcImg[(i - 1)*width + j + 1] - srcImg[(i + 1)*width + j - 1];
+			int com1 = smoothImage[(i + 1)*width + j + 1] - smoothImage[(i - 1)*width + j - 1];
+			int com2 = smoothImage[(i - 1)*width + j + 1] - smoothImage[(i + 1)*width + j - 1];
 
-			int gx = abs(com1 + com2 + (srcImg[i*width + j + 1] - srcImg[i*width + j - 1]));
-			int gy = abs(com1 - com2 + (srcImg[(i + 1)*width + j] - srcImg[(i - 1)*width + j]));
+			int gx = abs(com1 + com2 + (smoothImage[i*width + j + 1] - smoothImage[i*width + j - 1]));
+			int gy = abs(com1 - com2 + (smoothImage[(i + 1)*width + j] - smoothImage[(i - 1)*width + j]));
 
 			int g = gx + gy;
 
