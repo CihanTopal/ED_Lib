@@ -1066,11 +1066,9 @@ void EDCircles::ValidateCircles()
 	double prec = PI / 16;  // Alignment precision
 	double prob = 1.0 / 8;  // probability of alignment
 
-	double max = width; if (height > max) max = height;
-	double min = width; if (height < min) min = height;
-
-	double *px = new double[8 * (width + height)];
-	double *py = new double[8 * (width + height)];
+	int points_buffer_size = 8 * (width + height);
+	double *px = new double[points_buffer_size];
+	double *py = new double[points_buffer_size];
 
 	// logNT & LUT for NFA computation
 	double logNT = 2 * log10((double)(width*height)) + log10((double)(width + height));
@@ -1092,11 +1090,15 @@ void EDCircles::ValidateCircles()
 
 		validateAgain = false;
 
-		int noPoints = 0;
+		int noPoints = (int)(computeEllipsePerimeter(&circle->eq));
+
+		if (noPoints > points_buffer_size)
+		{
+			i++;
+			continue;
+		}
 
 		if (circle->isEllipse) {
-			noPoints = (int)(computeEllipsePerimeter(&circle->eq));
-
 			if (noPoints % 2) noPoints--;
 			ComputeEllipsePoints(circle->eq.coeff, px, py, noPoints);
 
