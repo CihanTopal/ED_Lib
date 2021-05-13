@@ -1047,7 +1047,6 @@ void EDCircles::DetectArcs(vector<LineSegment> lines)
 					y += noPixels;
 
 					firstLine = curLine;
-					info[curLine].taken = false;    // may reuse the last line?
 				} //end-while-current-arc-of-lines
 
 				firstLine = lastLine;
