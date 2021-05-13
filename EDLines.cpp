@@ -353,6 +353,9 @@ void EDLines::SplitSegment2Lines(double * x, double * y, int noPixels, int segme
 				while (ComputeMinDistance(x[index], y[index], lastA, lastB, lastInvert) > line_error) index--;
 				ComputeClosestPoint(x[index], y[index], lastA, lastB, lastInvert, ex, ey);
 
+				if ((sx == ex) & (sy == ey))
+					break;
+
 				// Add the line segment to lines
 				lines.push_back(LineSegment(lastA, lastB, lastInvert, sx, sy, ex, ey, segmentNo, firstPixelIndex + noSkippedPixels, index - noSkippedPixels + 1));
 				linesNo++;
