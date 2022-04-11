@@ -15,12 +15,14 @@ int main(int argc, const char** argv)
     cv::CommandLineParser parser(argc, argv,
         "{scale|1|}"
         "{counter|99999|}"
+        "{show|false|}"
         "{@filename|vtest.avi|}"
     );
 
     String filename = parser.get<string>("@filename");
     double scale = parser.get<double>("scale");
     int test_counter = parser.get<int>("counter");
+    bool show = parser.get<bool>("show");
     Mat src, gray;
     TickMeter tm0, tm1;
     int counter = 0;
@@ -28,14 +30,15 @@ int main(int argc, const char** argv)
     VideoCapture capture(samples::findFileOrKeep(filename));
     if (capture.isOpened())
     {
-        cout << "Capture is opened" << endl;
+        cout << "Capture is opened, " << capture.get(CAP_PROP_FRAME_COUNT) << " frames" << endl;
         cout << "Frame [width,height] : ["  << capture.get(CAP_PROP_FRAME_WIDTH) << "," << capture.get(CAP_PROP_FRAME_HEIGHT) << "]" << endl;
-        cout << "  scaled Frame [w,h] : [" << capture.get(CAP_PROP_FRAME_WIDTH) * scale << "," << capture.get(CAP_PROP_FRAME_HEIGHT) * scale << "]" << endl;;
+        cout << "Scaled[width,height] : [" << capture.get(CAP_PROP_FRAME_WIDTH) * scale << "," << capture.get(CAP_PROP_FRAME_HEIGHT) * scale << "]" << endl;;
 
         Ptr<EdgeDrawing> ed = createEdgeDrawing();
         ed->params.EdgeDetectionOperator = EdgeDrawing::SOBEL;
         ed->params.GradientThresholdValue = 36;
         ed->params.AnchorThresholdValue = 8;
+        ed->params.ScanInterval = 1;
         vector<Vec6d> ellipses;
         vector<Vec4f> lines;
 
@@ -63,18 +66,24 @@ int main(int argc, const char** argv)
             EDCircles testEDCircles = EDCircles(testEDLines);
             tm1.stop();
 
-            /*std::vector<LS> linesegments = testEDLines.getLines();
+            if (show)
+            {
+                std::vector<LS> linesegments = testEDLines.getLines();
 
-            Mat lineImg0 = testEDLines.getLineImage();    //draws on an empty image
-            Mat lineImg1 = Mat(lineImg0.rows, lineImg0.cols, CV_8UC1, Scalar(255));
+                Mat lineImg0 = testEDLines.getLineImage();    //draws on an empty image
+                Mat lineImg1 = Mat(lineImg0.rows, lineImg0.cols, CV_8UC1, Scalar(255));
 
-            for (int i = 0; i < lines.size(); i++)
-                line(lineImg1, Point2d(lines[i][0], lines[i][1]), Point2d(lines[i][2], lines[i][3]), Scalar(0), 1, LINE_AA);
+                for (int i = 0; i < lines.size(); i++)
+                    line(lineImg1, Point2d(lines[i][0], lines[i][1]), Point2d(lines[i][2], lines[i][3]), Scalar(0), 1, LINE_AA);
 
-            Mat diff;
-            absdiff(lineImg0, lineImg1, diff);
-            imshow("", diff);
-            waitKey();*/
+                Mat diff;
+                absdiff(lineImg0, lineImg1, diff);
+                imshow("lineImg0", lineImg0);
+                imshow("lineImg1", lineImg1);
+                imshow("diff", diff);
+                imshow("gray", gray);
+                waitKey();
+            }
         }
 
         cout << "OpenCV    processed " << counter << " frames in    " << tm0.getTimeMilli() << " ms.";
