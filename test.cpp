@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 	//***************************** ED Edge Segment Detection *****************************
 	//Detection of edge segments from an input image	
 
+	int delay = 1;
 	CommandLineParser parser(argc, argv, "{ @input | | }");
 	string input = parser.get<string>("@input");
 	Mat testImg = imread(input, IMREAD_GRAYSCALE);	
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 	//Show resulting edge image
 	Mat edgeImg = testED.getEdgeImage();
 	imshow("Edge Image - PRESS ANY KEY TO CONTINUE", edgeImg);
-	waitKey();
+	waitKey(delay);
 		
 	//Output number of segments
 	int noSegments = testED.getSegmentNo();
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
 	int noLines = testEDLines.getLinesNo();
 	std::cout << "Number of line segments: " << noLines << std::endl;
 
-	waitKey();
+	waitKey(delay);
 
 	//************************** EDPF Parameter-free Edge Segment Detection **************************
 	// Detection of edge segments with parameter free ED (EDPF)
@@ -56,7 +57,7 @@ int main(int argc, char *argv[])
 	Mat edgePFImage = testEDPF.getEdgeImage();
 	imshow("Edge Image Parameter Free", edgePFImage);
 	cout << "Number of edge segments found by EDPF: " << testEDPF.getSegmentNo() << endl;
-	waitKey();
+	waitKey(delay);
 
 	//***************************** EDCIRCLES Circle Segment Detection *****************************
 	//Detection of circles directly from the input image
@@ -80,7 +81,7 @@ int main(int argc, char *argv[])
 
 	int noCircles = testEDCircles.getCirclesNo();
 	std::cout << "Number of circles: " << noCircles << std::endl;
-	waitKey();
+	waitKey(delay);
 	
 	//*********************** EDCOLOR Edge Segment Detection from Color Images **********************
 		
@@ -88,13 +89,13 @@ int main(int argc, char *argv[])
 	EDColor testEDColor = EDColor(colorImg, 36, 4, 1.5, true); //last parameter for validation
 	imshow("Color Edge Image - PRESS ANY KEY TO QUIT", testEDColor.getEdgeImage());
 	cout << "Number of edge segments detected by EDColor: " << testEDColor.getSegmentNo() << endl;	
-	waitKey();	
+	waitKey(delay);	
 	
 	// get lines from color image
 	EDLines colorLine = EDLines(testEDColor);
 	imshow("Color Line", colorLine.getLineImage());
 	std::cout << "Number of line segments: " << colorLine.getLinesNo() << std::endl;
-	waitKey();
+	waitKey(delay);
 
 	// get circles from color image
 	EDCircles colorCircle = EDCircles(testEDColor);
@@ -102,7 +103,7 @@ int main(int argc, char *argv[])
 	circleImg = colorCircle.drawResult(false, ImageStyle::BOTH);
 	imshow("Color Circle", circleImg);
 	std::cout << "Number of line segments: " << colorCircle.getCirclesNo() << std::endl;
-	waitKey();
+	waitKey(delay);
 
 	return 0;
 }
