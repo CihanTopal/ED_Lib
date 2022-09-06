@@ -4,11 +4,14 @@
 using namespace cv;
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {	
 	//***************************** ED Edge Segment Detection *****************************
 	//Detection of edge segments from an input image	
-	Mat testImg = imread("billiard.jpg", 0);	
+
+	CommandLineParser parser(argc, argv, "{ @input | | }");
+	string input = parser.get<string>("@input");
+	Mat testImg = imread(input, IMREAD_GRAYSCALE);	
 	imshow("Source Image", testImg);
 
 	//Call ED constructor
@@ -73,7 +76,7 @@ int main()
 
 	//Circles and ellipses will be indicated in green and red, resp.
 	circleImg = testEDCircles.drawResult(true, ImageStyle::BOTH);
-	imshow("CIRCLES and ELLIPSES RESULT IMAGE", circleImg);
+	imwrite("CIRCLES_AND_ELLIPSES_RESULT_IMAGE.jpg", circleImg);
 
 	int noCircles = testEDCircles.getCirclesNo();
 	std::cout << "Number of circles: " << noCircles << std::endl;
@@ -81,8 +84,7 @@ int main()
 	
 	//*********************** EDCOLOR Edge Segment Detection from Color Images **********************
 		
-	Mat colorImg = imread("billiard.jpg");	
-	//Mat colorImg = imread("billiardNoise.jpg");
+	Mat colorImg = imread(input);	
 	EDColor testEDColor = EDColor(colorImg, 36, 4, 1.5, true); //last parameter for validation
 	imshow("Color Edge Image - PRESS ANY KEY TO QUIT", testEDColor.getEdgeImage());
 	cout << "Number of edge segments detected by EDColor: " << testEDColor.getSegmentNo() << endl;	
