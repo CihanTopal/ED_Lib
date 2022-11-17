@@ -19,7 +19,7 @@ EDColor::EDColor(Mat srcImage, int gradThresh, int anchor_thresh , double sigma,
 	}
 
 	// split channels (OpenCV uses BGR)
-	Mat bgr[3];
+	vector<Mat> bgr(3);
 	split(srcImage, bgr);
 	blueImg = bgr[0].data;
 	greenImg = bgr[1].data;
