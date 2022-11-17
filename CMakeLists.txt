@@ -21,7 +21,7 @@ add_library(EDLib STATIC
         NFA.cpp
         NFA.h)
 
-add_executable(test test.cpp)
+add_executable(test_it test_it.cpp)
 target_link_libraries(test ${OpenCV_LIBS} EDLib)
 
 add_executable(test_ED test_ED.cpp)

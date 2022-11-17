@@ -22,7 +22,7 @@ build_script:
 
 test_script:
   - cmd: set PATH=C:\projects\ed-lib\build-opencv\bin\Release
-  - cmd: C:\projects\ed-lib\build\Release\test.exe C:/projects/ed-lib/planet_glow.jpg
+  - cmd: C:\projects\ed-lib\build\Release\test_it.exe C:/projects/ed-lib/planet_glow.jpg
   - cmd: C:\projects\ed-lib\build\Release\test_ED.exe C:/projects/ed-lib/billiard.jpg
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
