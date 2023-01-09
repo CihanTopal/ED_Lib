@@ -437,24 +437,24 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 		if (dirImg[i*width + j] == EDGE_VERTICAL) {
 			stack[++top].r = i;
 			stack[top].c = j;
-			stack[top].dir = DOWN;
+			stack[top].dir = ED_DOWN;
 			stack[top].parent = 0;
 
 			stack[++top].r = i;
 			stack[top].c = j;
-			stack[top].dir = UP;
+			stack[top].dir = ED_UP;
 			stack[top].parent = 0;
 
 		}
 		else {
 			stack[++top].r = i;
 			stack[top].c = j;
-			stack[top].dir = RIGHT;
+			stack[top].dir = ED_RIGHT;
 			stack[top].parent = 0;
 
 			stack[++top].r = i;
 			stack[top].c = j;
-			stack[top].dir = LEFT;
+			stack[top].dir = ED_LEFT;
 			stack[top].parent = 0;
 		} //end-else
 
@@ -483,7 +483,7 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 			len++;
 			chainLen++;
 
-			if (dir == LEFT) {
+			if (dir == ED_LEFT) {
 				while (dirImg[r*width + c] == EDGE_HORIZONTAL) {
 					edgeImg[r*width + c] = EDGE_PIXEL;
 
@@ -533,12 +533,12 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = DOWN;
+				stack[top].dir = ED_DOWN;
 				stack[top].parent = noChains;
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = UP;
+				stack[top].dir = ED_UP;
 				stack[top].parent = noChains;
 
 				len--;
@@ -549,7 +549,7 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 				noChains++;
 
 			}
-			else if (dir == RIGHT) {
+			else if (dir == ED_RIGHT) {
 				while (dirImg[r*width + c] == EDGE_HORIZONTAL) {
 					edgeImg[r*width + c] = EDGE_PIXEL;
 
@@ -599,12 +599,12 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = DOWN;  // Go down
+				stack[top].dir = ED_DOWN;  // Go down
 				stack[top].parent = noChains;
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = UP;   // Go up
+				stack[top].dir = ED_UP;   // Go up
 				stack[top].parent = noChains;
 
 				len--;
@@ -615,7 +615,7 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 				noChains++;
 
 			}
-			else if (dir == UP) {
+			else if (dir == ED_UP) {
 				while (dirImg[r*width + c] == EDGE_VERTICAL) {
 					edgeImg[r*width + c] = EDGE_PIXEL;
 
@@ -665,12 +665,12 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = RIGHT;
+				stack[top].dir = ED_RIGHT;
 				stack[top].parent = noChains;
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = LEFT;
+				stack[top].dir = ED_LEFT;
 				stack[top].parent = noChains;
 
 				len--;
@@ -730,12 +730,12 @@ void ED::JoinAnchorPointsUsingSortedAnchors()
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = RIGHT;
+				stack[top].dir = ED_RIGHT;
 				stack[top].parent = noChains;
 
 				stack[++top].r = r;
 				stack[top].c = c;
-				stack[top].dir = LEFT;
+				stack[top].dir = ED_LEFT;
 				stack[top].parent = noChains;
 
 				len--;
