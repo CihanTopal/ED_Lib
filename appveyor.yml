@@ -6,8 +6,8 @@ platform:
 
 install:
   - cmd: echo "compile OpenCV"
-  - cmd: git clone --depth=1 --branch=3.4 https://github.com/opencv/opencv.git
-  - cmd: git clone --depth=1 --branch=3.4 https://github.com/opencv/opencv_contrib.git
+  - cmd: git clone --depth=1 --branch=4.x https://github.com/opencv/opencv.git
+  - cmd: git clone --depth=1 --branch=4.x https://github.com/opencv/opencv_contrib.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
   - cmd: cmake -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DWITH_OPENEXR=OFF -DWITH_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DWITH_TIFF=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_TESTS=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_stitching=OFF -DBUILD_opencv_aruco=OFF -DBUILD_opencv_bioinspired=OFF -DBUILD_opencv_fuzzy=OFF -DBUILD_opencv_hfs=OFF -DBUILD_opencv_img_hash=OFF -DBUILD_opencv_surface_matching=OFF -DBUILD_opencv_bgsegm=OFF -DBUILD_opencv_intensity_transform=OFF -DBUILD_opencv_optflow=OFF -DBUILD_opencv_phase_unwrapping=OFF -DBUILD_opencv_plot=OFF -DBUILD_opencv_rapid=OFF -DBUILD_opencv_reg=OFF -DBUILD_opencv_rgbd=OFF -DBUILD_opencv_saliency=OFF -DBUILD_opencv_shape=OFF -DBUILD_opencv_stereo=OFF -DBUILD_opencv_structured_light=OFF -DBUILD_opencv_superres=OFF -DBUILD_opencv_tracking=OFF -DBUILD_opencv_videostab=OFF -DBUILD_opencv_xfeatures2d=OFF -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ../opencv -G "Visual Studio 16 2019"
