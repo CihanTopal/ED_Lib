@@ -334,6 +334,7 @@ void ED::ComputeGradient()
 			case SCHARR_OPERATOR:
 				gx = abs(3 * (com1 + com2) + 10 * (smoothImg[i*width + j + 1] - smoothImg[i*width + j - 1]));
 				gy = abs(3 * (com1 - com2) + 10 * (smoothImg[(i + 1)*width + j] - smoothImg[(i - 1)*width + j]));
+				break;
 			case LSD_OPERATOR:
 				// com1 and com2 differs from previous operators, because LSD has 2x2 kernel
 				int com1 = smoothImg[(i + 1)*width + j + 1] - smoothImg[i*width + j];
