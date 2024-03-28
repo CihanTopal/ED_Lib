@@ -25,10 +25,10 @@
 #define ANCHOR_PIXEL  254
 #define EDGE_PIXEL    255
 
-#define LEFT  1
-#define RIGHT 2
-#define UP    3
-#define DOWN  4
+#define ED_LEFT  1
+#define ED_RIGHT 2
+#define ED_UP    3
+#define ED_DOWN  4
 
 enum GradientOperator { PREWITT_OPERATOR = 101, SOBEL_OPERATOR = 102, SCHARR_OPERATOR = 103, LSD_OPERATOR = 104 };
 
