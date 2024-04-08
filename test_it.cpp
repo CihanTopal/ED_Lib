@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 	// TO DO :: drawResult doesnt overlay (onImage = true) when input is from EDColor
 	circleImg = colorCircle.drawResult(false, ImageStyle::BOTH);
 	imshow("Color Circle", circleImg);
-	std::cout << "Number of line segments: " << colorCircle.getCirclesNo() << std::endl;
+	std::cout << "Number of circles: " << colorCircle.getCirclesNo() << std::endl;
 	waitKey(delay);
 
 	return 0;
