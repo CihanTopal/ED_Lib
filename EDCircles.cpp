@@ -569,7 +569,7 @@ EDCircles::EDCircles(EDColor obj)
 	} //end-for
 
 	  // This is how much space we will allocate for circles buffers
-	int maxNoOfCircles = (int)lines.size() / 3 + noCircles1 * 2;
+	int maxNoOfCircles = (int)lines.size() / 3 + noCircles1 * 2 + 2;
 
 	edarcs1 = new EDArcs(maxNoOfCircles);
 	DetectArcs(lines);    // Detect all arcs
