@@ -365,9 +365,6 @@ void EDColor::validateEdgeSegments()
 		} //end-for
 	} //end-for
 
-	Mat gradImage = Mat(height, width, CV_16SC1, gradImg);
-	imwrite("newGrad.pgm", gradImage);
-
 	// Compute probability function H
 	int size = (width - 2)*(height - 2);
 	//  size -= grads[0];

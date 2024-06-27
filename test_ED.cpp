@@ -50,11 +50,9 @@ int main(int argc, char** argv)
         ed->getEdgeImage(edgeImg1);
         absdiff(edgeImg0, edgeImg1, diff);
         cout << "different pixel count              : " << countNonZero(diff) << endl;
-        imwrite("gradImg0.png", gradImg0);
-        imwrite("anchImg0.png", anchImg0);
-        imwrite("edgeImg0.png", edgeImg0);
-        imwrite("edgeImg1.png", edgeImg1);
-        imwrite("diff0.png", diff);
+        imwrite("EqualGradImage.png", gradImg0);
+        imwrite("EqualAnchorImage.png", anchImg0);
+        imwrite("EqualEdgeImage.png", edgeImg0);
 
         //***************************** EDLINES Line Segment Detection *****************************
         //Detection of lines segments from edge segments instead of input image
@@ -65,8 +63,8 @@ int main(int argc, char** argv)
         tm.stop();
         cout << "-------------------------------------------------\n";
         cout << "testEDLines.getLineImage()         : " << tm.getTimeMilli() << endl;
-        Mat lineImg0 = testEDLines.getLineImage();    //draws on an empty image
-        imwrite("lineImg0.png", lineImg0);
+        Mat lineImg0 = testEDLines.getLineImage();
+        imwrite("EqualLineImg.png", lineImg0);
 
         tm.reset();
         tm.start();
@@ -81,8 +79,6 @@ int main(int argc, char** argv)
 
         absdiff(lineImg0, lineImg1, diff);
         cout << "different pixel count              : " << countNonZero(diff) << endl;
-        imwrite("lineImg1.png", lineImg1);
-        imwrite("diff1.png", diff);
 
         //***************************** EDCIRCLES Circle Segment Detection *****************************
         //Detection of circles from already available EDPF or ED image
@@ -102,8 +98,9 @@ int main(int argc, char** argv)
 
         vector<mCircle> found_circles = testEDCircles.getCircles();
         vector<mEllipse> found_ellipses = testEDCircles.getEllipses();
-        Mat ellipsImg0 = Mat(lineImg0.rows, lineImg0.cols, CV_8UC3, Scalar::all(0));
-        Mat ellipsImg1 = Mat(lineImg0.rows, lineImg0.cols, CV_8UC3, Scalar::all(0));
+        Mat ellipsImg0, ellipsImg1;
+        cvtColor(testImg, ellipsImg0, COLOR_GRAY2BGR);
+        cvtColor(testImg, ellipsImg1, COLOR_GRAY2BGR);
 
         for (int i = 0; i < found_circles.size(); i++)
         {
@@ -135,8 +132,8 @@ int main(int argc, char** argv)
             ellipse(ellipsImg1, center, axes, angle, 0, 360, color, 1, LINE_AA);
         }
 
-        imwrite("ellipsImg0.png", ellipsImg0);
-        imwrite("ellipsImg1.png", ellipsImg1);
+        imwrite("EllipsImg0.png", ellipsImg0);
+        imwrite("EllipsImg1.png", ellipsImg1);
 
         //************************** EDPF Parameter-free Edge Segment Detection **************************
         // Detection of edge segments with parameter free ED (EDPF)
@@ -162,32 +159,112 @@ int main(int argc, char** argv)
         ed->getEdgeImage(edgeImg1);
         absdiff(edgeImg0, edgeImg1, diff);
         cout << "different pixel count              : " << countNonZero(diff) << endl;
-        imwrite("edgePFImage0.png", edgeImg0);
-        imwrite("edgePFImage1.png", edgeImg1);
-        imwrite("diff2.png", diff);
+        imwrite("EdgePFImage0.png", edgeImg0);
+        imwrite("EdgePFImage1.png", edgeImg1);
+        imwrite("DiffEdgePFImage.png", diff);
         //*********************** EDCOLOR Edge Segment Detection from Color Images **********************
 
         Mat colorImg = imread(filename);
         tm.reset();
         tm.start();
         EDColor testEDColor = EDColor(colorImg, 36);
+        edgeImg0 = testEDColor.getEdgeImage();
         tm.stop();
         cout << "-------------------------------------------------\n";
-        cout << "testEDColor                        : " << tm.getTimeMilli() << endl;
+        cout << "testEDColor.getEdgeImage()         : " << tm.getTimeMilli() << endl;
+
+        Ptr<EdgeDrawing> ed2 = createEdgeDrawing();
+        ed2->params.EdgeDetectionOperator = EdgeDrawing::PREWITT;
+        ed2->params.GradientThresholdValue = 36;
+        ed2->params.AnchorThresholdValue = 4;
+        ed2->params.Sigma = 1.5;
+
+        tm.reset();
+        tm.start();
+        ed2->detectEdges(colorImg);
+        tm.stop();
+        cout << "detectEdges()            (OpenCV)  : " << tm.getTimeMilli() << endl;
+
+        ed2->getEdgeImage(edgeImg1);
+        absdiff(edgeImg0, edgeImg1, diff);
+        cout << "different pixel count              : " << countNonZero(diff) << endl;
+        imwrite("EqualColorEdgeImg.png", edgeImg0);
 
         tm.reset();
         tm.start();
         // get lines from color image
         EDLines colorLine = EDLines(testEDColor);
         tm.stop();
+        cout << "-------------------------------------------------\n";
         cout << "get lines from color image         : " << tm.getTimeMilli() << endl;
+        lineImg0 = colorLine.getLineImage();
+        imwrite("EqualColorLineImg.png", lineImg0);
+        tm.reset();
+        tm.start();
+        ed2->detectLines(lines);
+        tm.stop();
+        cout << "detectLines()            (OpenCV)  : " << tm.getTimeMilli() << endl;
 
+        lineImg1 = Mat(lineImg0.rows, lineImg0.cols, CV_8UC1, Scalar(255));
+
+        for (int i = 0; i < lines.size(); i++)
+            line(lineImg1, Point2d(lines[i][0], lines[i][1]), Point2d(lines[i][2], lines[i][3]), Scalar(0), 1, LINE_AA);
+
+        absdiff(lineImg0, lineImg1, diff);
+        cout << "different pixel count              : " << countNonZero(diff) << endl;
+        cout << "-------------------------------------------------\n";
         tm.reset();
         tm.start();
         // get circles from color image
         EDCircles colorCircle = EDCircles(testEDColor);
         tm.stop();
         cout << "get circles from color image       : " << tm.getTimeMilli() << endl;
+        tm.reset();
+        tm.start();
+        ed2->detectEllipses(ellipses);
+        tm.stop();
+        cout << "detectEllipses()         (OpenCV)  : " << tm.getTimeMilli() << endl;
+
+        found_circles = colorCircle.getCircles();
+        found_ellipses = colorCircle.getEllipses();
+
+        ellipsImg0 = colorImg.clone();
+        ellipsImg1 = colorImg.clone();
+        for (int i = 0; i < found_circles.size(); i++)
+        {
+            Point center((int)found_circles[i].center.x, (int)found_circles[i].center.y);
+            Size axes((int)found_circles[i].r, (int)found_circles[i].r);
+            double angle(0.0);
+            Scalar color = Scalar(0, 255, 0);
+
+            ellipse(ellipsImg0, center, axes, angle, 0, 360, color, 2, LINE_AA);
+        }
+
+        for (int i = 0; i < found_ellipses.size(); i++)
+        {
+            Point center((int)found_ellipses[i].center.x, (int)found_ellipses[i].center.y);
+            Size axes((int)found_ellipses[i].axes.width, (int)found_ellipses[i].axes.height);
+            double angle = found_ellipses[i].theta * 180 / CV_PI;
+            Scalar color = Scalar(255, 255, 0);
+
+            ellipse(ellipsImg0, center, axes, angle, 0, 360, color, 2, LINE_AA);
+        }
+
+
+
+        for (size_t i = 0; i < ellipses.size(); i++)
+        {
+            Point center((int)ellipses[i][0], (int)ellipses[i][1]);
+            Size axes((int)ellipses[i][2] + (int)ellipses[i][3], (int)ellipses[i][2] + (int)ellipses[i][4]);
+            double angle(ellipses[i][5]);
+            Scalar color = ellipses[i][2] == 0 ? Scalar(255, 255, 0) : Scalar(0, 255, 0);
+
+            ellipse(ellipsImg1, center, axes, angle, 0, 360, color, 2, LINE_AA);
+        }
+
+        imwrite("ColorEllipsImg0.png", ellipsImg0);
+        imwrite("ColorEllipsImg1.png", ellipsImg1);
+
     }
     return 0;
 }
