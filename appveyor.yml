@@ -24,10 +24,10 @@ build_script:
   - make
 
 test_script:
-  - ./test_it C:/projects/ed-lib/planet_glow.jpg
-  - ./test_ED C:/projects/ed-lib/billiard.jpg
-  - cmd: C:\projects\ed-lib\build\Release\video_test.exe
-  - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
+  - ./test_it /projects/ed-lib/planet_glow.jpg
+  - ./test_ED /projects/ed-lib/billiard.jpg
+  - ./video_test
+  - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=4 --counter=50
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=8 --counter=50
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=16 --counter=5
