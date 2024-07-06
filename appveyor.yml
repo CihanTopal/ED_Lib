@@ -6,7 +6,7 @@ platform:
 
 install:
   - git clone --depth=1 --branch=4.x https://github.com/opencv/opencv.git
-  - git clone --depth=1 --branch=edcolor https://github.com/sturkmen72/opencv_contrib.git
+  - git clone --depth=1 --branch=edcolor1 https://github.com/sturkmen72/opencv_contrib.git
   - git clone --depth=1 --branch=animated_webp_support https://github.com/sturkmen72/opencv_extra.git
   - export OPENCV_TEST_DATA_PATH=$(pwd)/opencv_extra/testdata
   - mkdir build-opencv
@@ -28,7 +28,7 @@ test_script:
   - ./test_ED /projects/ed-lib/billiard.jpg
   - ./video_test
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
-  - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=4 --counter=50
+  - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=4 --counter=50
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=8 --counter=50
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=16 --counter=5
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=23 --counter=1
