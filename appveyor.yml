@@ -30,7 +30,7 @@ test_script:
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=4 --counter=50
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=8 --counter=50
-  - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=16 --counter=5
+  - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=16 --counter=5
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe C:/projects/ed-lib/opencv/samples/data/vtest.avi --scale=23 --counter=1
   - cmd: C:\projects\ed-lib\build\Release\video_test.exe http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 
