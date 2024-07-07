@@ -27,7 +27,7 @@ build_script:
 test_script:
   - ./test_it /projects/ed-lib/planet_glow.jpg
   - ./test_ED /projects/ed-lib/billiard.jpg
-  - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=100
+  - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=2 --counter=101
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=4 --counter=50
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=8 --counter=50
   - ./video_test /projects/ed-lib/opencv/samples/data/vtest.avi --scale=16 --counter=5
