@@ -7,7 +7,7 @@ platform:
 install:
   - cmd: echo "compile OpenCV"
   - cmd: git clone --depth=1 --branch=4.x https://github.com/opencv/opencv.git
-  - cmd: git clone --depth=1 --branch=edcolor https://github.com/sturkmen72/opencv_contrib.git
+  - cmd: git clone --depth=1 --branch=edcolor3 https://github.com/sturkmen72/opencv_contrib.git
   - cmd: git clone --depth=1 --branch=animated_webp_support https://github.com/sturkmen72/opencv_extra.git
   - cmd: md build-opencv
   - cmd: cd build-opencv
@@ -15,7 +15,7 @@ install:
   - cmd: cmake --build . --config Release
   - cmd: cd..
   - cmd: set OpenCV_DIR=C:\projects\ed-lib\build-opencv
-  - cmd: set OpenCV_TEST_DATA_PATH=C:\projects\opencv_extra\testdata
+  - cmd: set OPENCV_TEST_DATA_PATH=C:\projects\ed-lib\opencv_extra\testdata
 
 build_script:
   - cmd: md build
