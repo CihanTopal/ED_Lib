@@ -16,7 +16,8 @@ install:
   - cd ..
   - cd build-opencv/bin/
   - ./opencv_test_ximgproc
-
+  - cd ..
+  - cd ..
 build_script:
   - mkdir build
   - cd build
