@@ -6,7 +6,7 @@ platform:
 
 install:
   - git clone --depth=1 --branch=4.x https://github.com/opencv/opencv.git
-  - git clone --depth=1 --branch=edcolor1 https://github.com/sturkmen72/opencv_contrib.git
+  - git clone --depth=1 --branch=edcolor5 https://github.com/sturkmen72/opencv_contrib.git
   - git clone --depth=1 --branch=animated_webp_support https://github.com/sturkmen72/opencv_extra.git
   - export OPENCV_TEST_DATA_PATH=$(pwd)/opencv_extra/testdata
   - mkdir build-opencv
