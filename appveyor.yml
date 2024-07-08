@@ -6,9 +6,10 @@ platform:
 
 install:
   - git clone --depth=1 --branch=4.x https://github.com/opencv/opencv.git
-  - git clone --depth=1 --branch=edcolor5 https://github.com/sturkmen72/opencv_contrib.git
+  - git clone --depth=1 --branch=edcolor https://github.com/sturkmen72/opencv_contrib.git
   - git clone --depth=1 --branch=animated_webp_support https://github.com/sturkmen72/opencv_extra.git
   - export OPENCV_TEST_DATA_PATH=$(pwd)/opencv_extra/testdata
+  - export OPENCV_DIR=$(pwd)/build-opencv
   - mkdir build-opencv
   - cd build-opencv
   - cmake -DBUILD_opencv_java=OFF -DWITH_JASPER=OFF -DWITH_WEBP=OFF -DBUILD_IPP_IW=OFF -DBUILD_ITT=OFF -DWITH_OPENEXR=OFF -DWITH_OPENJPEG=OFF -DBUILD_PROTOBUF=OFF -DWITH_TIFF=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_TESTS=ON -DBUILD_opencv_dnn=OFF -DBUILD_opencv_gapi=OFF -DBUILD_opencv_ml=OFF -DBUILD_opencv_objdetect=OFF -DBUILD_opencv_photo=OFF -DBUILD_opencv_stitching=OFF -DBUILD_opencv_aruco=OFF -DBUILD_opencv_bioinspired=OFF -DBUILD_opencv_fuzzy=OFF -DBUILD_opencv_hfs=OFF -DBUILD_opencv_img_hash=OFF -DBUILD_opencv_surface_matching=OFF -DBUILD_opencv_bgsegm=OFF -DBUILD_opencv_intensity_transform=OFF -DBUILD_opencv_optflow=OFF -DBUILD_opencv_phase_unwrapping=OFF -DBUILD_opencv_plot=OFF -DBUILD_opencv_rapid=OFF -DBUILD_opencv_reg=OFF -DBUILD_opencv_rgbd=OFF -DBUILD_opencv_saliency=OFF -DBUILD_opencv_shape=OFF -DBUILD_opencv_stereo=OFF -DBUILD_opencv_structured_light=OFF -DBUILD_opencv_superres=OFF -DBUILD_opencv_tracking=OFF -DBUILD_opencv_videostab=OFF -DBUILD_opencv_xfeatures2d=OFF -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules -DCMAKE_BUILD_TYPE=Release ../opencv
