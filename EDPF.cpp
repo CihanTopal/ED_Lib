@@ -216,7 +216,7 @@ void EDPF::ExtractNewSegments()
 				//segments[noSegments].pixels = &map->segments[i].pixels[start];
 				//segments[noSegments].noPixels = len;
 				validSegments.push_back(vector<Point>());
-				vector<Point> subVec(&segmentPoints[i][start], &segmentPoints[i][end - 1]);
+				vector<Point> subVec(&segmentPoints[i][start], &segmentPoints[i][end]);
 				validSegments[noSegments] = subVec;
 				noSegments++;
 			} //end-else
