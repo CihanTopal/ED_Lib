@@ -9,7 +9,7 @@ using namespace cv::ximgproc;
 
 int main(int argc, char** argv)
 {
-    char* filename;
+    const char* filename;
     if (argc > 1)
         filename = argv[1];
     else
