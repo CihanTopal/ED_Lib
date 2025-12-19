@@ -214,10 +214,8 @@ void EDPF::ExtractNewSegments()
 			if (len >= 10) {
 				// A new segment. Accepted only only long enough (whatever that means)
 				//segments[noSegments].pixels = &map->segments[i].pixels[start];
-				//segments[noSegments].noPixels = len;
-				validSegments.push_back(vector<Point>());
-				vector<Point> subVec(&segmentPoints[i][start], &segmentPoints[i][end]);
-				validSegments[noSegments] = subVec;
+				vector<Point> subVec(segmentPoints[i].begin() + start, segmentPoints[i].begin() + end);
+				validSegments.push_back(subVec);
 				noSegments++;
 			} //end-else
 
